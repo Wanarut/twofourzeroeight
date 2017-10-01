@@ -12,6 +12,9 @@ namespace twozerofoureight
         protected int[,] board;
         protected Random rand;
 
+        protected int score = 0;    //declare score point
+        protected bool isMove = true;
+
         public TwoZeroFourEightModel() : this(4)
         {
             // default board size is 4 
@@ -20,6 +23,11 @@ namespace twozerofoureight
         public int[,] GetBoard()
         {
             return board;
+        }
+
+        public int GetScore()   //score return function
+        {
+            return score;
         }
 
         public TwoZeroFourEightModel(int size)
@@ -67,13 +75,25 @@ namespace twozerofoureight
                 {
                     buffer[k] = 0;
                 }
-                //shift left
+                //shift down
                 foreach (int j in rangeY)
                 {
                     if (board[j, i] != 0)
                     {
                         buffer[pos] = board[j, i];
                         pos++;
+                    }
+                    //check it has fall?
+                    try
+                    {
+                        if (board[j, i] == 0 && board[j - 1, i] != 0)
+                        {
+                            isMove = true;
+                        }
+                    }
+                    catch
+                    {
+                        Exception e;
                     }
                 }
                 // check duplicate
@@ -83,9 +103,12 @@ namespace twozerofoureight
                     {
                         buffer[j - 1] *= 2;
                         buffer[j] = 0;
+                        //increase score
+                        score += buffer[j - 1];
+                        isMove = true;
                     }
                 }
-                // shift left again
+                // shift down again
                 pos = 3;
                 foreach (int j in rangeX)
                 {
@@ -101,7 +124,8 @@ namespace twozerofoureight
                     board[k, i] = 0;
                 }
             }
-            board = Random(board);
+            if (isMove) board = Random(board);
+            isMove = false;
             NotifyAll();
         }
 
@@ -127,6 +151,18 @@ namespace twozerofoureight
                         buffer[pos] = board[j, i];
                         pos++;
                     }
+                    //check it has up?
+                    try
+                    {
+                        if (board[j, i] == 0 && board[j + 1, i] != 0)
+                        {
+                            isMove = true;
+                        }
+                    }
+                    catch
+                    {
+                        Exception e;
+                    }
                 }
                 // check duplicate
                 foreach (int j in range)
@@ -135,6 +171,9 @@ namespace twozerofoureight
                     {
                         buffer[j - 1] *= 2;
                         buffer[j] = 0;
+                        //increase score
+                        score += buffer[j - 1];
+                        isMove = true;
                     }
                 }
                 // shift left again
@@ -153,7 +192,8 @@ namespace twozerofoureight
                     board[k, i] = 0;
                 }
             }
-            board = Random(board);
+            if (isMove) board = Random(board);
+            isMove = false;
             NotifyAll();
         }
 
@@ -181,6 +221,18 @@ namespace twozerofoureight
                         buffer[pos] = board[i, j];
                         pos++;
                     }
+                    //check it has move?
+                    try
+                    {
+                        if (board[i, j] == 0 && board[i, j - 1] != 0)
+                        {
+                            isMove = true;
+                        }
+                    }
+                    catch
+                    {
+                        Exception e;
+                    }
                 }
                 // check duplicate
                 foreach (int j in rangeY)
@@ -189,6 +241,9 @@ namespace twozerofoureight
                     {
                         buffer[j - 1] *= 2;
                         buffer[j] = 0;
+                        //increase score
+                        score += buffer[j - 1];
+                        isMove = true;
                     }
                 }
                 // shift left again
@@ -207,7 +262,8 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
-            board = Random(board);
+            if (isMove) board = Random(board);
+            isMove = false;
             NotifyAll();
         }
 
@@ -232,6 +288,18 @@ namespace twozerofoureight
                         buffer[pos] = board[i, j];
                         pos++;
                     }
+                    //check it has move?
+                    try
+                    {
+                        if (board[i, j] == 0 && board[i, j + 1] != 0)
+                        {
+                            isMove = true;
+                        }
+                    }
+                    catch
+                    {
+                        Exception e;
+                    }
                 }
                 // check duplicate
                 foreach (int j in range)
@@ -240,6 +308,9 @@ namespace twozerofoureight
                     {
                         buffer[j - 1] *= 2;
                         buffer[j] = 0;
+                        //increase score
+                        score += buffer[j - 1];
+                        isMove = true;
                     }
                 }
                 // shift left again
@@ -257,7 +328,8 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
-            board = Random(board);
+            if(isMove) board = Random(board);
+            isMove = false;
             NotifyAll();
         }
     }

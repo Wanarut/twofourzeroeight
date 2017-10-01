@@ -28,6 +28,7 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
+            UpdateScore(((TwoZeroFourEightModel)m).GetScore());
         }
 
         private void UpdateTile(Label l, int i)
@@ -47,13 +48,37 @@ namespace twozerofoureight
                     l.BackColor = Color.DarkGray;
                     break;
                 case 4:
-                    l.BackColor = Color.Orange;
+                    l.BackColor = Color.Silver;
                     break;
                 case 8:
-                    l.BackColor = Color.Red;
+                    l.BackColor = Color.LightSalmon;
+                    break;
+                case 16:
+                    l.BackColor = Color.Coral;
+                    break;
+                case 32:
+                    l.BackColor = Color.Salmon;
+                    break;
+                case 64:
+                    l.BackColor = Color.Brown;
+                    break;
+                case 128:
+                    l.BackColor = Color.SandyBrown;
+                    break;
+                case 256:
+                    l.BackColor = Color.Goldenrod;
+                    break;
+                case 512:
+                    l.BackColor = Color.Orange;
+                    break;
+                case 1024:
+                    l.BackColor = Color.DarkOrange;
+                    break;
+                case 2048:
+                    l.BackColor = Color.Gold;
                     break;
                 default:
-                    l.BackColor = Color.Green;
+                    l.BackColor = Color.Yellow;
                     break;
             }
         }
@@ -75,6 +100,11 @@ namespace twozerofoureight
             UpdateTile(lbl31,board[3, 1]);
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
+        }
+
+        private void UpdateScore(int score)
+        {
+            lblScore.Text = Convert.ToString(score);
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
