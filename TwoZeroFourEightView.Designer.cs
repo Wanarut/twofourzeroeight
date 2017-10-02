@@ -53,6 +53,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblGameOver = new System.Windows.Forms.Label();
             this.btnRe = new System.Windows.Forms.Button();
+            this.btnNewG = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -270,7 +271,7 @@
             this.btnLeft.CausesValidation = false;
             this.btnLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLeft.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnLeft.Location = new System.Drawing.Point(130, 351);
+            this.btnLeft.Location = new System.Drawing.Point(136, 346);
             this.btnLeft.Margin = new System.Windows.Forms.Padding(1);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(50, 50);
@@ -285,7 +286,7 @@
             this.btnUp.CausesValidation = false;
             this.btnUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUp.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnUp.Location = new System.Drawing.Point(182, 299);
+            this.btnUp.Location = new System.Drawing.Point(188, 294);
             this.btnUp.Margin = new System.Windows.Forms.Padding(1);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(50, 50);
@@ -300,7 +301,7 @@
             this.btnRight.CausesValidation = false;
             this.btnRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRight.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnRight.Location = new System.Drawing.Point(234, 351);
+            this.btnRight.Location = new System.Drawing.Point(240, 346);
             this.btnRight.Margin = new System.Windows.Forms.Padding(1);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(50, 50);
@@ -315,7 +316,7 @@
             this.btnDown.CausesValidation = false;
             this.btnDown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDown.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnDown.Location = new System.Drawing.Point(182, 403);
+            this.btnDown.Location = new System.Drawing.Point(188, 398);
             this.btnDown.Margin = new System.Windows.Forms.Padding(1);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(50, 50);
@@ -357,17 +358,17 @@
             this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBox1.Location = new System.Drawing.Point(3, 307);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(129, 63);
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
             // lblGameOver
             // 
             this.lblGameOver.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblGameOver.BackColor = System.Drawing.Color.Transparent;
-            this.lblGameOver.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblGameOver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblGameOver.BackColor = System.Drawing.Color.Maroon;
+            this.lblGameOver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblGameOver.Font = new System.Drawing.Font("Consolas", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameOver.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblGameOver.Location = new System.Drawing.Point(12, 100);
             this.lblGameOver.Margin = new System.Windows.Forms.Padding(0);
             this.lblGameOver.Name = "lblGameOver";
@@ -382,20 +383,34 @@
             this.btnRe.CausesValidation = false;
             this.btnRe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRe.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnRe.Location = new System.Drawing.Point(182, 351);
+            this.btnRe.Location = new System.Drawing.Point(188, 346);
             this.btnRe.Margin = new System.Windows.Forms.Padding(1);
             this.btnRe.Name = "btnRe";
             this.btnRe.Size = new System.Drawing.Size(50, 50);
             this.btnRe.TabIndex = 34;
             this.btnRe.Text = "↺";
             this.btnRe.UseVisualStyleBackColor = true;
+            this.btnRe.Visible = false;
+            // 
+            // btnNewG
+            // 
+            this.btnNewG.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewG.Location = new System.Drawing.Point(3, 376);
+            this.btnNewG.Name = "btnNewG";
+            this.btnNewG.Size = new System.Drawing.Size(71, 30);
+            this.btnNewG.TabIndex = 35;
+            this.btnNewG.Text = "New Game";
+            this.btnNewG.UseVisualStyleBackColor = true;
+            this.btnNewG.Click += new System.EventHandler(this.btnNewGLeft_Click);
+            this.btnNewG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNewG_KeyDown);
             // 
             // TwoZeroFourEightView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(173)))), ((int)(((byte)(160)))));
-            this.ClientSize = new System.Drawing.Size(301, 459);
+            this.ClientSize = new System.Drawing.Size(301, 453);
+            this.Controls.Add(this.btnNewG);
             this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.btnRe);
             this.Controls.Add(this.lbltxtscore);
@@ -457,6 +472,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblGameOver;
         private System.Windows.Forms.Button btnRe;
+        private System.Windows.Forms.Button btnNewG;
     }
 }
 

@@ -237,5 +237,20 @@ namespace twozerofoureight
         {
             actionKey(e.KeyCode);
         }
+
+        private void btnNewGLeft_Click(object sender, EventArgs e)
+        {
+            //New model
+            model = new TwoZeroFourEightModel();
+            model.AttachObserver(this);
+            controller = new TwoZeroFourEightController();
+            controller.AddModel(model);
+            controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+        }
+
+        private void btnNewG_KeyDown(object sender, KeyEventArgs e)
+        {
+            actionKey(e.KeyCode);
+        }
     }
 }
