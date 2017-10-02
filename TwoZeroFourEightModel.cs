@@ -30,6 +30,73 @@ namespace twozerofoureight
             return score;
         }
 
+        public bool IsGameOver()
+        {
+            for(int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if (board[i, j] == 0)   //can move to blank space
+                    {
+                        return false;
+                    }
+                }
+            }
+            //check center
+            for(int i = 1; i < boardSize - 1; i++)
+            {
+                for (int j = 1; j < boardSize - 1; j++)
+                {
+                    if (board[i, j] == board[i, j - 1]) //can up
+                    {
+                        return false;
+                    }
+                    if (board[i, j] == board[i, j + 1]) //can down
+                    {
+                        return false;
+                    }
+                    if (board[i, j] == board[i + 1, j]) //can right
+                    {
+                        return false;
+                    }
+                    if (board[i, j] == board[i - 1, j]) //can left siht
+                    {
+                        return false;
+                    }
+                }
+            }
+            //check 4 corner
+            for(int i = 0; i < boardSize - 1; i++)
+            {
+                if (board[i, 0] == board[i + 1, 0])
+                {
+                    return false;
+                }
+            }
+            for (int i = 0; i < boardSize - 1; i++)
+            {
+                if (board[i, boardSize - 1] == board[i + 1, boardSize - 1])
+                {
+                    return false;
+                }
+            }
+            for (int j = 0; j < boardSize - 1; j++)
+            {
+                if (board[0, j] == board[0, j + 1])
+                {
+                    return false;
+                }
+            }
+            for (int j = 0; j < boardSize - 1; j++)
+            {
+                if (board[boardSize - 1, j] == board[boardSize - 1, j + 1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public TwoZeroFourEightModel(int size)
         {
             boardSize = size;
@@ -83,17 +150,13 @@ namespace twozerofoureight
                         buffer[pos] = board[j, i];
                         pos++;
                     }
-                    //check it has fall?
-                    try
+                }
+                //check can down shift
+                for (int j = rangeY.Length - 1; j != 0; j--)
+                {
+                    if (board[j, i] == 0 && board[j - 1, i] != 0)
                     {
-                        if (board[j, i] == 0 && board[j - 1, i] != 0)
-                        {
-                            isMove = true;
-                        }
-                    }
-                    catch
-                    {
-                        Exception e;
+                        isMove = true;
                     }
                 }
                 // check duplicate
@@ -151,17 +214,13 @@ namespace twozerofoureight
                         buffer[pos] = board[j, i];
                         pos++;
                     }
-                    //check it has up?
-                    try
+                }
+                //check can up shift
+                for (int j = 0; j < range.Length - 1; j++)
+                {
+                    if (board[j, i] == 0 && board[j + 1, i] != 0)
                     {
-                        if (board[j, i] == 0 && board[j + 1, i] != 0)
-                        {
-                            isMove = true;
-                        }
-                    }
-                    catch
-                    {
-                        Exception e;
+                        isMove = true;
                     }
                 }
                 // check duplicate
@@ -221,17 +280,13 @@ namespace twozerofoureight
                         buffer[pos] = board[i, j];
                         pos++;
                     }
-                    //check it has move?
-                    try
+                }
+                //check can right shift
+                for (int j = rangeX.Length-1; j != 0; j--)
+                {
+                    if (board[i, j] == 0 && board[i, j - 1] != 0)
                     {
-                        if (board[i, j] == 0 && board[i, j - 1] != 0)
-                        {
-                            isMove = true;
-                        }
-                    }
-                    catch
-                    {
-                        Exception e;
+                        isMove = true;
                     }
                 }
                 // check duplicate
@@ -288,17 +343,13 @@ namespace twozerofoureight
                         buffer[pos] = board[i, j];
                         pos++;
                     }
-                    //check it has move?
-                    try
+                }
+                //check can left shift
+                for (int j = 0; j < range.Length-1; j++)
+                {
+                    if (board[i, j] == 0 && board[i, j + 1] != 0)
                     {
-                        if (board[i, j] == 0 && board[i, j + 1] != 0)
-                        {
-                            isMove = true;
-                        }
-                    }
-                    catch
-                    {
-                        Exception e;
+                        isMove = true;
                     }
                 }
                 // check duplicate
