@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TwoZeroFourEightView));
             this.lbl00 = new System.Windows.Forms.Label();
             this.lbl01 = new System.Windows.Forms.Label();
             this.lbl02 = new System.Windows.Forms.Label();
@@ -276,6 +277,7 @@
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(50, 50);
             this.btnLeft.TabIndex = 16;
+            this.btnLeft.TabStop = false;
             this.btnLeft.Text = "◄";
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
@@ -291,6 +293,7 @@
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(50, 50);
             this.btnUp.TabIndex = 17;
+            this.btnUp.TabStop = false;
             this.btnUp.Text = "▲";
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
@@ -306,6 +309,7 @@
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(50, 50);
             this.btnRight.TabIndex = 18;
+            this.btnRight.TabStop = false;
             this.btnRight.Text = "►";
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
@@ -321,6 +325,7 @@
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(50, 50);
             this.btnDown.TabIndex = 19;
+            this.btnDown.TabStop = false;
             this.btnDown.Text = "▼";
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
@@ -388,17 +393,20 @@
             this.btnRe.Name = "btnRe";
             this.btnRe.Size = new System.Drawing.Size(50, 50);
             this.btnRe.TabIndex = 34;
+            this.btnRe.TabStop = false;
             this.btnRe.Text = "↺";
             this.btnRe.UseVisualStyleBackColor = true;
             this.btnRe.Visible = false;
             // 
             // btnNewG
             // 
+            this.btnNewG.CausesValidation = false;
             this.btnNewG.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewG.Location = new System.Drawing.Point(3, 376);
             this.btnNewG.Name = "btnNewG";
             this.btnNewG.Size = new System.Drawing.Size(71, 30);
             this.btnNewG.TabIndex = 35;
+            this.btnNewG.TabStop = false;
             this.btnNewG.Text = "New Game";
             this.btnNewG.UseVisualStyleBackColor = true;
             this.btnNewG.Click += new System.EventHandler(this.btnNewGLeft_Click);
@@ -409,6 +417,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(173)))), ((int)(((byte)(160)))));
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(301, 453);
             this.Controls.Add(this.btnNewG);
             this.Controls.Add(this.lblGameOver);
@@ -436,8 +445,12 @@
             this.Controls.Add(this.lbl02);
             this.Controls.Add(this.lbl01);
             this.Controls.Add(this.lbl00);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "TwoZeroFourEightView";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "\"2048\"";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

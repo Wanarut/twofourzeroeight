@@ -42,8 +42,31 @@ namespace twozerofoureight
                     }
                 }
             }
+            //create buffer for check
+            int[,] buffer = new int[boardSize + 2, boardSize + 2];
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    buffer[i + 1, j + 1] = board[i, j];
+                }
+            }
+            //check all
+            for (int i = 1; i <= boardSize; i++)
+            {
+                for (int j = 1; j <= boardSize; j++)
+                {
+                    if (buffer[i, j] == buffer[i, j - 1] ||
+                        buffer[i, j] == buffer[i, j + 1] ||
+                        buffer[i, j] == buffer[i + 1, j] ||
+                        buffer[i, j] == buffer[i - 1, j])
+                    {
+                        return false;
+                    }
+                }
+            }
             //check center
-            for(int i = 1; i < boardSize - 1; i++)
+            /*for(int i = 1; i < boardSize - 1; i++)
             {
                 for (int j = 1; j < boardSize - 1; j++)
                 {
@@ -93,7 +116,7 @@ namespace twozerofoureight
                 {
                     return false;
                 }
-            }
+            }*/
             return true;
         }
 

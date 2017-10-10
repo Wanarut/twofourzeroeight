@@ -23,6 +23,7 @@ namespace twozerofoureight
             controller = new TwoZeroFourEightController();
             controller.AddModel(model);
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+            //test
         }
 
         public void Notify(Model m)
@@ -199,9 +200,9 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
-        private void actionKey(Keys key)
+        private void actionKey(Keys keys)
         {
-            switch (key)
+            switch (keys)
             {
                 case Keys.W:
                     controller.ActionPerformed(TwoZeroFourEightController.UP);
@@ -215,27 +216,44 @@ namespace twozerofoureight
                 case Keys.D:
                     controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
                     break;
+                case Keys.Up:
+                    controller.ActionPerformed(TwoZeroFourEightController.UP);
+                    break;
+                case Keys.Left:
+                    controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                    break;
+                case Keys.Down:
+                    controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+                    break;
+                case Keys.Right:
+                    controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+                    break;
             }
         }
 
         private void btnLeft_KeyDown(object sender, KeyEventArgs e)
         {
-            actionKey(e.KeyCode);
+            actionKey(e.KeyData);
         }
 
         private void btnUp_KeyDown(object sender, KeyEventArgs e)
         {
-            actionKey(e.KeyCode);
+            actionKey(e.KeyData);
         }
 
         private void btnRight_KeyDown(object sender, KeyEventArgs e)
         {
-            actionKey(e.KeyCode);
+            actionKey(e.KeyData);
         }
 
         private void btnDown_KeyDown(object sender, KeyEventArgs e)
         {
-            actionKey(e.KeyCode);
+            actionKey(e.KeyData);
+        }
+        
+        private void btnNewG_KeyDown(object sender, KeyEventArgs e)
+        {
+            actionKey(e.KeyData);
         }
 
         private void btnNewGLeft_Click(object sender, EventArgs e)
@@ -248,9 +266,10 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
         }
 
-        private void btnNewG_KeyDown(object sender, KeyEventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            actionKey(e.KeyCode);
+            actionKey(keyData);
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
